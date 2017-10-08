@@ -1,0 +1,20 @@
+ProductId,Name,AlcoholType,BottleSize,Price
+P-50007,Maker's Mark Bourbon Whisky,BOURBON,HANDLE,45.99
+P-50017,Bulleit Bourbon,BOURBON,FIFTH,24.99
+P-50027,Hendricks Gin,GIN,FIFTH,25.99
+P-50037,Tanqueray Gin,GIN,HANDLE,25.99
+P-50047,Del Maguey Mezcal Chichicapa,MEZCAL,FIFTH,86.99
+P-50057,Captain Morgan's Spiced Rum,RUM,FIFTH,13.49
+P-50067,Bacardi Superior,RUM,FIFTH,9.99
+P-50077,Malibu Coconut Rum,RUM,LITER,13.29
+P-50087,Johnnie Walker Blue Label,SCOTCH,FIFTH,209.99
+P-50097,Buchanan's 12 Yr,SCOTCH,FIFTH,34.99
+P-50107,Patron Silver,TEQUILA,FIFTH,47.99
+P-50117,Jose Cuervo Gold,TEQUILA,HANDLE,23.99
+P-50127,1800 Silver Tequila,TEQUILA,FIFTH,28.49
+P-50137,Tito's Handmade Vodka,VODKA,HANDLE,29.99
+P-50147,Absolut,VODKA,FIFTH,16.99
+P-50157,Jack Daniels Black,WHISKY,PINT,11.99
+P-50167,Jameson Irish Whisky,WHISKY,FIFTH,19.99
+P-50177,Canadian Club,WHISKY,FIFTH,16.99
+P-50187,Crown Royal,WHISKY,HANDLE,41.99
