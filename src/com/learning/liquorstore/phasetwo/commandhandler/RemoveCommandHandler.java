@@ -18,7 +18,7 @@ public class RemoveCommandHandler implements CommandHandler {
     /**
      * Handles the "remove" command. Prompts the user for a productId and
      *   a quantity. Then removes the given quantity of that Product from
-     *   the Inventory. Displays whether the operation was successful or not.
+     *   the Inventory. Displays whether the opequatration was successful or not.
      */
     public boolean handleCommand() {
         System.out.println("\nNow removing stock for a Product from the Inventory...");

@@ -2,6 +2,8 @@ package com.learning.liquorstore.phasetwo;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.learning.liquorstore.phasetwo.commandhandler.AddCommandHandler;
@@ -9,6 +11,7 @@ import com.learning.liquorstore.phasetwo.commandhandler.QuantityCommandHandler;
 import com.learning.liquorstore.phasetwo.commandhandler.RemoveCommandHandler;
 import com.learning.liquorstore.phasetwo.commandhandler.ViewCommandHandler;
 import com.learning.liquorstore.phasetwo.data.Inventory;
+import com.learning.liquorstore.phasetwo.data.model.Product;
 import com.learning.liquorstore.phasetwo.util.Logger;
 import com.learning.liquorstore.phasetwo.util.ProductDataCSVReader;
 
@@ -70,8 +73,11 @@ public class LiquorStore {
      */
     private static void initializeLiquorStore(Inventory inventory) {
         try {
-            ProductDataCSVReader.initializeProducts(inventory);
-            ProductDataCSVReader.initializeInventory(inventory);
+            List<Product> products = ProductDataCSVReader.loadProductDataFromCSV(Product.class);
+            inventory.addNewProducts(products);
+
+            Map<String, Integer> productQuantities = ProductDataCSVReader.loadProductQtyDataFromCSV();
+            inventory.addQtyForProducts(productQuantities);
         } catch (IOException | ParseException e) {
             System.out.println(e.getMessage());
             System.exit(1);

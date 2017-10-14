@@ -1,8 +1,10 @@
 package com.learning.liquorstore.phasetwo.util;
 
+import java.util.Arrays;
+
 public class Logger {
 
-    private static final String PREFIX = "[DEBUG] - %s.%s - ";
+    private static final String PREFIX = "[DEBUG] - %s.%s:%d - ";
 
     private static boolean shouldDisplayLogs;
 
@@ -19,9 +21,12 @@ public class Logger {
         }
     }
 
-    public static void debug(String msg, String ... args) {
+    public static void debug(String msg, Object ... args) {
         if (shouldDisplayLogs) {
-            System.out.println(String.format(generatePrefix() + msg, args));
+            String[] stringArgs = Arrays.asList(args).stream()
+                    .map(obj -> String.valueOf(obj))
+                    .toArray(String[]::new);
+            System.out.println(String.format(generatePrefix() + msg, stringArgs));
         }
     }
 
@@ -32,7 +37,8 @@ public class Logger {
         String className = callingStackTrace.getClassName();
         String simpleClassName = className.substring(className.lastIndexOf('.') + 1);
 
-        return String.format(PREFIX, simpleClassName, callingStackTrace.getMethodName());
+        return String.format(PREFIX, simpleClassName, callingStackTrace.getMethodName(),
+                callingStackTrace.getLineNumber());
     }
 
 }

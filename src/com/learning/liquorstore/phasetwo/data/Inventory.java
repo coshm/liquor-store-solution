@@ -1,8 +1,10 @@
 package com.learning.liquorstore.phasetwo.data;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -81,13 +83,24 @@ public class Inventory {
     }
 
     /**
+     * Add a List of newly created Products to the productCatalog and any other
+     *   Product collections so that they can be used in the Inventory.
+     * @param products the List of new Products to add
+     */
+    public void addNewProducts(List<Product> products) {
+        for (Product product : products) {
+            addNewProduct(product);
+        }
+    }
+
+    /**
      * Add to the quantity of the Product with the given
      *   productId in the Inventory.
      * @param productId the Id of the Product to add.
      * @param quantity the number of units to add to the Inventory.
      * @return the success of the add operation.
      */
-    public boolean addProducts(String productId, int quantity) {
+    public boolean addQtyForProduct(String productId, int quantity) {
         if (!productCatalog.containsKey(productId)) {
             Logger.debug("ProductId not found in ProductCatalog. ProductId='%s'.", productId);
             return false;
@@ -98,6 +111,22 @@ public class Inventory {
         int updatedQty = existingQty + quantity;
         productQuantities.put(product, updatedQty);
         return true;
+    }
+
+    /**
+     * Add to the quantities of the Products with the given
+     *   productIds in the Inventory. Will always perform all
+     *   adds and return the results.
+     * @param productQuantities collection of productId and quantity pairs.
+     * @return collection of productId and boolean results flag pairs.
+     */
+    public Map<String, Boolean> addQtyForProducts(Map<String, Integer> productQuantities) {
+        Map<String, Boolean> addResults = new HashMap<>(productQuantities.size());
+        for (Map.Entry<String, Integer> prodQty : productQuantities.entrySet()) {
+            boolean success = addQtyForProduct(prodQty.getKey(), prodQty.getValue());
+            addResults.put(prodQty.getKey(), success);
+        }
+        return addResults;
     }
 
     /**

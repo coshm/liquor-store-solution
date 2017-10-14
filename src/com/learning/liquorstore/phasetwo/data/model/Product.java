@@ -40,14 +40,14 @@ public class Product {
      * Constructor for Product.
      * @param productId the Id of the Product.
      * @param name the name of the Product.
-     * @param type the alcohol type of the Product.
+     * @param alcoholType the alcohol type of the Product.
      * @param bottleSize the Product's bottle size.
      * @param price the price of the Product.
      */
-    public Product(String productId, String name, AlcoholType type, BottleSize bottleSize, double price) {
+    public Product(String productId, String name, AlcoholType alcoholType, BottleSize bottleSize, double price) {
         this.productId = productId;
         this.name = name;
-        this.alcoholType = type;
+        this.alcoholType = alcoholType;
         this.bottleSize = bottleSize;
         this.price = price;
     }

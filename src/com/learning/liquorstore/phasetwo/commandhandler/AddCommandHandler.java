@@ -33,7 +33,7 @@ public class AddCommandHandler implements CommandHandler {
         int quantity = scanner.nextInt();
         scanner.nextLine();
 
-        boolean wasSuccessful = inventory.addProducts(productId, quantity);
+        boolean wasSuccessful = inventory.addQtyForProduct(productId, quantity);
 
         if (wasSuccessful) {
             Product product = inventory.getProductById(productId);
